@@ -1,0 +1,45 @@
+<%= form_for(@contact) do |f| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+      <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :first_name, "Nombre" %><br>
+    <%= f.text_field :first_name, :class => 'form-control' %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :last_name, "Apellido" %><br>
+    <%= f.text_field :last_name, :class => 'form-control' %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :email %><br>
+    <%= f.email_field :email, :class => 'form-control' %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :country, "País" %><br>
+    <%= f.text_field :country, :class => 'form-control' %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :profession, "Ocupación" %><br>
+    <%= f.text_field :profession, :class => 'form-control' %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :birthdate, "Fecha de nacimiento" %><br>
+    <%= f.date_select :birthdate, :start_year => 1960, :end_year => Time.now.year - 8, :class => 'form-control' %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :about, "Cuentanos un poco de tí" %><br>
+    <%= f.text_area :about, :class => 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Enviar", :class => "btn btn-default" %>
+  </div>
+<% end %>
